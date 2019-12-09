@@ -1,4 +1,4 @@
-const yargs = require('yargs');
+const yargs = require('yargs'); //to get input from user
 
 const notes = require('./notes');
 const validate = require('./utils');
@@ -7,8 +7,9 @@ const validate = require('./utils');
 yargs.version('1.1.0');
 
 // Create add command
-yargs.command({
-  command: 'add',
+// The goal is to allow users to pass in the title and body of their notes using command line options
+yargs.command({//command line arguments that allow users to pass data into your application
+  command: 'add', //if input ==add it will run handler
   describe: 'Add a new note',
   builder: {
     title: {
@@ -23,6 +24,7 @@ yargs.command({
     }
   },
   handler(argv) {
+    console.log("hi")
     notes.addNote(argv.title, argv.body);
   }
 });
